@@ -343,7 +343,7 @@ separate WAMP client components that connect to the router and register / subscr
 For Python backends, use a WAMP client library such as 
 [Autobahn|Python](https://github.com/crossbario/autobahn-python) or 
 [xconn-python](https://github.com/xconnio/xconn-python), together with a router of your choice 
-(e.g. [Crossbar.io](https://crossbar.io)). Keeping your handlers as plain async functions with the business logic 
+(e.g. [Crossbar.io](https://crossbar.io) or [Nexus](https://github.com/gammazero/nexus)). Keeping your handlers as plain async functions with the business logic 
 separate from the WAMP wiring makes this step mostly mechanical: only the registration code changes.
 
 A few more things to map:
