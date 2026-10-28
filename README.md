@@ -295,6 +295,52 @@ register_serializer(UbjsonSerializer())
 
 Clients can then connect with the `wamp.2.ubjson` subprotocol.
 
+## Migrating to a full-fledged WAMP router
+
+This library lets a project speak WAMP from day one without running a router. When the project grows and needs real 
+routing, you can put a full-fledged WAMP router (e.g. [Crossbar.io](https://crossbar.io)) in place. The backend then 
+connects to the router as a regular WAMP client, and the clients keep speaking plain WAMP. Most of the work is on the 
+backend side, but a few behaviors differ behind a router. Designing for them from the start keeps the switch painless.
+
+### Client-registered procedures
+
+Here, procedures registered by a client are scoped to its session, so every client can register the *same* URI 
+(e.g. `com.client.get_status`) and the server calls each one through `session.call()`.
+
+Behind a router, procedure URIs are global within a realm. The second client registering the same URI gets 
+`wamp.error.procedure_already_exists`, and a caller can no longer pick which client to invoke.
+
+Workarounds:
+
+- **Per-client URIs** — include something unique to the client in the URI, e.g. its session ID or a user/device ID: 
+  `com.client.<session_id>.get_status`. This works the same way with this library and behind a router, so it is the 
+  safest choice from the start.
+- **Shared registrations** — if any client may answer the call, register with an invocation policy 
+  (`roundrobin`, `random`, ...) so the router allows several registrations of one URI. This only fits when it does not 
+  matter which client handles the call.
+
+### Client-to-client PubSub
+
+Here, a client's publish reaches only the server's subscription handlers; other clients never receive it, even if 
+they are subscribed to the same topic.
+
+Behind a router, events are delivered to every subscriber of the topic, including other clients. An app that relies on 
+client publishes being private to the server will suddenly start receiving its peers' events.
+
+Workarounds:
+
+- Use separate topics for client-to-server messages (e.g. `com.app.client.chat`) and server-to-client events 
+  (e.g. `com.app.chat`), so clients never subscribe to topics other clients publish to.
+- Or restrict delivery explicitly with `eligible` / `exclude` publish options, or with router-side authorization rules.
+
+### Server side
+
+On the backend, server-side RPCs and subscriptions become regular WAMP registrations and subscriptions of a client 
+session (e.g. with [Autobahn|Python](https://github.com/crossbario/autobahn-python)). Calls from the server to a 
+specific client use that client's own URI (see above), and publishing to a single session maps to a publish with 
+`eligible=[session_id]`. If a handler relies on knowing the calling client, enable caller/publisher disclosure 
+(`disclose_me`) on the router or in the client.
+
 ## Clients Compatibility
 
 This library is designed to be compatible with [wampy.js](https://github.com/KSDaemon/wampy.js) and other standard WAMP clients. The server 
