@@ -53,7 +53,7 @@ async function openConnection(label) {
 async function main() {
   console.log();
   console.log("=".repeat(60));
-  console.log("  fastapi-headless-wamp  —  End-to-End Demo (Wampy.js)");
+  console.log("  fastapi-routerless-wamp  —  End-to-End Demo (Wampy.js)");
   console.log("=".repeat(60));
   console.log();
   console.log(`  Connecting to: ${url}`);
@@ -134,10 +134,10 @@ async function main() {
 
   // 3d. com.example.echo.reverse
   const revResult = await clientA.call("com.example.echo.reverse", [
-    "fastapi-headless-wamp",
+    "fastapi-routerless-wamp",
   ]);
   const reversed = revResult.argsList[0];
-  log("Client A", `com.example.echo.reverse("fastapi-headless-wamp") => ${reversed}`);
+  log("Client A", `com.example.echo.reverse("fastapi-routerless-wamp") => ${reversed}`);
 
   // 3e. com.example.echo.stats
   const statsResult = await clientA.call("com.example.echo.stats");

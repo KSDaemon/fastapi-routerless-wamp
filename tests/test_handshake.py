@@ -15,14 +15,14 @@ import json
 from typing import Any
 from unittest.mock import AsyncMock
 
-from fastapi_headless_wamp.hub import WampHub
-from fastapi_headless_wamp.protocol import (
+from fastapi_routerless_wamp.hub import WampHub
+from fastapi_routerless_wamp.protocol import (
     WAMP_ERROR_CLOSE_REALM,
     WAMP_ERROR_GOODBYE_AND_OUT,
     WampMessageType,
 )
-from fastapi_headless_wamp.serializers import JsonSerializer
-from fastapi_headless_wamp.session import (
+from fastapi_routerless_wamp.serializers import JsonSerializer
+from fastapi_routerless_wamp.session import (
     BROKER_FEATURES,
     DEALER_FEATURES,
     WampSession,

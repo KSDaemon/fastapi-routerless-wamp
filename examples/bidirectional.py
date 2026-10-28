@@ -17,9 +17,9 @@ import datetime
 
 from fastapi import FastAPI
 
-from fastapi_headless_wamp import WampHub, WampSession
+from fastapi_routerless_wamp import WampHub, WampSession
 
-app = FastAPI(title="fastapi-headless-wamp Bidirectional RPC Example")
+app = FastAPI(title="fastapi-routerless-wamp Bidirectional RPC Example")
 wamp = WampHub(realm="realm1")
 
 

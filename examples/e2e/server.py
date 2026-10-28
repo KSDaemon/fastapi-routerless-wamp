@@ -1,4 +1,4 @@
-"""End-to-end demo server: RPC + PubSub with fastapi-headless-wamp.
+"""End-to-end demo server: RPC + PubSub with fastapi-routerless-wamp.
 
 Run with:
     uvicorn examples.e2e.server:app --host 0.0.0.0 --port 8080
@@ -20,9 +20,9 @@ from typing import Any
 
 from fastapi import FastAPI
 
-from fastapi_headless_wamp import WampHub, WampService, WampSession, rpc, subscribe
+from fastapi_routerless_wamp import WampHub, WampService, WampSession, rpc, subscribe
 
-app = FastAPI(title="fastapi-headless-wamp E2E Demo")
+app = FastAPI(title="fastapi-routerless-wamp E2E Demo")
 wamp = WampHub(realm="realm1")
 
 

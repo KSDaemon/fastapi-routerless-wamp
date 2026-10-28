@@ -1,13 +1,13 @@
-# fastapi-headless-wamp
+# fastapi-routerless-wamp
 
-[![PyPI](https://img.shields.io/pypi/v/fastapi-headless-wamp)](https://pypi.org/project/fastapi-headless-wamp/)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/fastapi-headless-wamp)](https://pypi.org/project/fastapi-headless-wamp/)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/fastapi-headless-wamp)](https://pypi.org/project/fastapi-headless-wamp/)
-[![Tests](https://github.com/KSDaemon/fastapi-headless-wamp/actions/workflows/lint-and-test.yml/badge.svg)](https://github.com/KSDaemon/fastapi-headless-wamp/actions/workflows/lint-and-test.yml)
-[![License](https://img.shields.io/pypi/l/fastapi-headless-wamp)](https://github.com/KSDaemon/fastapi-headless-wamp/blob/main/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/fastapi-routerless-wamp)](https://pypi.org/project/fastapi-routerless-wamp/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/fastapi-routerless-wamp)](https://pypi.org/project/fastapi-routerless-wamp/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/fastapi-routerless-wamp)](https://pypi.org/project/fastapi-routerless-wamp/)
+[![Tests](https://github.com/KSDaemon/fastapi-routerless-wamp/actions/workflows/lint-and-test.yml/badge.svg)](https://github.com/KSDaemon/fastapi-routerless-wamp/actions/workflows/lint-and-test.yml)
+[![License](https://img.shields.io/pypi/l/fastapi-routerless-wamp)](https://github.com/KSDaemon/fastapi-routerless-wamp/blob/main/LICENSE)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
-![fastapi-headless-wamp logo](https://raw.githubusercontent.com/KSDaemon/fastapi-headless-wamp/main/misc/wamp-fast-api-logo.png)
+![fastapi-routerless-wamp logo](https://raw.githubusercontent.com/KSDaemon/fastapi-routerless-wamp/main/misc/wamp-fast-api-logo.png)
 
 Full bidirectional [WAMP](https://wamp-proto.org/) (Web Application Messaging Protocol) RPC and PubSub 
 for [FastAPI](https://fastapi.tiangolo.com/) — **without a separate WAMP router**.
@@ -15,6 +15,9 @@ for [FastAPI](https://fastapi.tiangolo.com/) — **without a separate WAMP route
 Each WebSocket connection gets its own isolated peer-to-peer session between the server and the client. 
 There is no shared broker or dealer infrastructure. This makes the library lightweight, easy to deploy, and ideal 
 for applications that need structured bidirectional communication over WebSockets.
+
+> Formerly published as `fastapi-headless-wamp` (up to 0.3.2). Starting with 0.4.0 the package, the import name 
+> and the repository are called `fastapi-routerless-wamp` / `fastapi_routerless_wamp`.
 
 ## Features
 
@@ -52,14 +55,14 @@ and client communicate directly within the session. This means:
 ## Installation
 
 ```bash
-pip install fastapi-headless-wamp
+pip install fastapi-routerless-wamp
 ```
 
 With binary serialization (CBOR and/or MsgPack):
 
 ```bash
-pip install fastapi-headless-wamp[cbor]
-pip install fastapi-headless-wamp[msgpack]
+pip install fastapi-routerless-wamp[cbor]
+pip install fastapi-routerless-wamp[msgpack]
 ```
 
 ## Quick Start
@@ -68,7 +71,7 @@ pip install fastapi-headless-wamp[msgpack]
 
 ```python
 from fastapi import FastAPI
-from fastapi_headless_wamp import WampHub, WampSession
+from fastapi_routerless_wamp import WampHub, WampSession
 
 app = FastAPI()
 wamp = WampHub(realm="realm1")
@@ -97,7 +100,7 @@ can call `com.example.add`.
 
 ```python
 from fastapi import FastAPI
-from fastapi_headless_wamp import WampHub, WampService, WampSession, rpc
+from fastapi_routerless_wamp import WampHub, WampService, WampSession, rpc
 
 app = FastAPI()
 wamp = WampHub(realm="realm1")
@@ -127,7 +130,7 @@ If you need more control, use `handle_websocket` directly:
 
 ```python
 from fastapi import FastAPI, WebSocket
-from fastapi_headless_wamp import WampHub, WampSession
+from fastapi_routerless_wamp import WampHub, WampSession
 
 app = FastAPI()
 wamp = WampHub(realm="realm1")
@@ -148,7 +151,7 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
 The server can call RPCs that clients have registered on their session:
 
 ```python
-from fastapi_headless_wamp import WampHub, WampSession
+from fastapi_routerless_wamp import WampHub, WampSession
 
 wamp = WampHub(realm="realm1")
 
@@ -247,8 +250,8 @@ async def on_close(session: WampSession) -> None:
 | Serializer | Subprotocol | Format | Install |
 |---|---|---|---|
 | `JsonSerializer` | `wamp.2.json` | Text (UTF-8) | included |
-| `CborSerializer` | `wamp.2.cbor` | Binary | `pip install fastapi-headless-wamp[cbor]` |
-| `MsgpackSerializer` | `wamp.2.msgpack` | Binary | `pip install fastapi-headless-wamp[msgpack]` |
+| `CborSerializer` | `wamp.2.cbor` | Binary | `pip install fastapi-routerless-wamp[cbor]` |
+| `MsgpackSerializer` | `wamp.2.msgpack` | Binary | `pip install fastapi-routerless-wamp[msgpack]` |
 
 All are registered automatically at import time (CBOR only when `cbor2` is installed, MsgPack only when
 `msgpack` is installed).
@@ -267,7 +270,7 @@ convert them to string representations. MsgPack and CBOR both carry `bytes` nati
 To add another serializer (e.g. UBJSON), implement the `Serializer` protocol:
 
 ```python
-from fastapi_headless_wamp import Serializer, register_serializer
+from fastapi_routerless_wamp import Serializer, register_serializer
 
 
 class UbjsonSerializer:

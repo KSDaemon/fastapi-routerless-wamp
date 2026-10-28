@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# End-to-end demo for fastapi-headless-wamp using Wampy.js client.
+# End-to-end demo for fastapi-routerless-wamp using Wampy.js client.
 #
 # This script:
 #   1. Installs Node.js dependencies (wampy, ws) if needed
@@ -13,7 +13,7 @@
 #   bash run.sh
 #
 # Prerequisites:
-#   - Python 3.12+ with uvicorn and fastapi-headless-wamp installed
+#   - Python 3.12+ with uvicorn and fastapi-routerless-wamp installed
 #   - Node.js 18+
 #   - npm
 #

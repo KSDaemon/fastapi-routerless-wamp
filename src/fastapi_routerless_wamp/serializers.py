@@ -109,7 +109,7 @@ class CborSerializer:
 
     Requires the ``cbor2`` package::
 
-        pip install fastapi-headless-wamp[cbor]
+        pip install fastapi-routerless-wamp[cbor]
 
     CBOR natively supports ``datetime``, ``Decimal``, ``UUID``, ``bytes``
     and other types that JSON cannot represent without string conversion.
@@ -120,7 +120,7 @@ class CborSerializer:
             import cbor2 as _cbor2
         except ImportError as exc:
             raise ImportError(
-                "cbor2 is required for CBOR serialization. Install it with: pip install fastapi-headless-wamp[cbor]"
+                "cbor2 is required for CBOR serialization. Install it with: pip install fastapi-routerless-wamp[cbor]"
             ) from exc
         self._cbor2 = _cbor2
 
@@ -174,7 +174,7 @@ class MsgpackSerializer:
 
     Requires the ``msgpack`` package::
 
-        pip install fastapi-headless-wamp[msgpack]
+        pip install fastapi-routerless-wamp[msgpack]
 
     MsgPack is a compact binary format that is faster and smaller than JSON
     while supporting the same data types.
@@ -186,7 +186,7 @@ class MsgpackSerializer:
         except ImportError as exc:
             raise ImportError(
                 "msgpack is required for MsgPack serialization. "
-                "Install it with: pip install fastapi-headless-wamp[msgpack]"
+                "Install it with: pip install fastapi-routerless-wamp[msgpack]"
             ) from exc
         self._msgpack = _msgpack
 

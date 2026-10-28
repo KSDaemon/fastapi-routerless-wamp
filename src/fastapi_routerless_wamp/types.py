@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
-from fastapi_headless_wamp.protocol import WampMessageType
+from fastapi_routerless_wamp.protocol import WampMessageType
 
 # ---------------------------------------------------------------------------
 # Primitive type aliases

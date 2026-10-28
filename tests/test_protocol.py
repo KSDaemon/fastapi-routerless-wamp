@@ -2,8 +2,8 @@
 
 import pytest
 
-from fastapi_headless_wamp.errors import WampInvalidMessageError
-from fastapi_headless_wamp.protocol import (
+from fastapi_routerless_wamp.errors import WampInvalidMessageError
+from fastapi_routerless_wamp.protocol import (
     WAMP_ERROR_CANCELED,
     WAMP_ERROR_CLOSE_REALM,
     WAMP_ERROR_GOODBYE_AND_OUT,
@@ -38,7 +38,7 @@ from fastapi_headless_wamp.protocol import (
     validate_welcome,
     validate_yield,
 )
-from fastapi_headless_wamp.types import (
+from fastapi_routerless_wamp.types import (
     CallMessage,
     GoodbyeMessage,
     HelloMessage,

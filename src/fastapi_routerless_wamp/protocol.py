@@ -3,7 +3,7 @@
 from enum import IntEnum
 from typing import Any
 
-from fastapi_headless_wamp.errors import WampInvalidMessageError
+from fastapi_routerless_wamp.errors import WampInvalidMessageError
 
 # ---------------------------------------------------------------------------
 # WAMP message type codes (RFC-compliant IntEnum)

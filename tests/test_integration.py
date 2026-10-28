@@ -25,8 +25,8 @@ from fastapi import FastAPI
 from fastapi import WebSocket as FastAPIWebSocket
 from starlette.testclient import TestClient
 
-from fastapi_headless_wamp.hub import WampHub
-from fastapi_headless_wamp.protocol import (
+from fastapi_routerless_wamp.hub import WampHub
+from fastapi_routerless_wamp.protocol import (
     WAMP_ERROR_CANCELED,
     WAMP_ERROR_GOODBYE_AND_OUT,
     WAMP_ERROR_NO_SUCH_PROCEDURE,
@@ -34,8 +34,8 @@ from fastapi_headless_wamp.protocol import (
     WAMP_ERROR_RUNTIME_ERROR,
     WampMessageType,
 )
-from fastapi_headless_wamp.service import WampService, rpc, subscribe
-from fastapi_headless_wamp.session import WampSession
+from fastapi_routerless_wamp.service import WampService, rpc, subscribe
+from fastapi_routerless_wamp.session import WampSession
 
 # ---------------------------------------------------------------------------
 # Helper: perform WAMP handshake over a test WS

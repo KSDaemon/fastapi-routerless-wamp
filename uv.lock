@@ -245,7 +245,7 @@ wheels = [
 ]
 
 [[package]]
-name = "fastapi-headless-wamp"
+name = "fastapi-routerless-wamp"
 source = { editable = "." }
 dependencies = [
     { name = "fastapi" },

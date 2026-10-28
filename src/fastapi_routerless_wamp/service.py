@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Any
 if TYPE_CHECKING:
     from collections.abc import Callable
 
-    from fastapi_headless_wamp.hub import WampHub
+    from fastapi_routerless_wamp.hub import WampHub
 
 logger = logging.getLogger(__name__)
 

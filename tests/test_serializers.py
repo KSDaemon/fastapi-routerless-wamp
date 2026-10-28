@@ -11,7 +11,7 @@ from uuid import UUID
 import pytest
 from pydantic import BaseModel
 
-from fastapi_headless_wamp.serializers import (
+from fastapi_routerless_wamp.serializers import (
     WAMP_SUBPROTOCOL_PREFIX,
     CborSerializer,
     JsonSerializer,

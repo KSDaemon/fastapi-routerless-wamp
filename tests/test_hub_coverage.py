@@ -13,9 +13,9 @@ import asyncio
 import json
 from typing import Any
 
-from fastapi_headless_wamp.hub import WampHub
-from fastapi_headless_wamp.protocol import WampMessageType
-from fastapi_headless_wamp.session import WampSession
+from fastapi_routerless_wamp.hub import WampHub
+from fastapi_routerless_wamp.protocol import WampMessageType
+from fastapi_routerless_wamp.session import WampSession
 
 # ---------------------------------------------------------------------------
 # Mock WebSocket

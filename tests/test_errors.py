@@ -2,7 +2,7 @@
 
 import pytest
 
-from fastapi_headless_wamp.errors import (
+from fastapi_routerless_wamp.errors import (
     WampCallTimeoutError,
     WampCanceledError,
     WampError,

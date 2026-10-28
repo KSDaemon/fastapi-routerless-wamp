@@ -11,18 +11,18 @@ from typing import Any, Final
 
 from starlette.websockets import WebSocket, WebSocketDisconnect
 
-from fastapi_headless_wamp.errors import (
+from fastapi_routerless_wamp.errors import (
     WampCallTimeoutError,
     WampError,
     WampNoSuchProcedureError,
 )
-from fastapi_headless_wamp.protocol import (
+from fastapi_routerless_wamp.protocol import (
     WAMP_ERROR_CLOSE_REALM,
     WAMP_ERROR_GOODBYE_AND_OUT,
     WampMessageType,
     validate_hello,
 )
-from fastapi_headless_wamp.serializers import (
+from fastapi_routerless_wamp.serializers import (
     WAMP_SUBPROTOCOL_PREFIX,
     Serializer,
     get_available_subprotocols,

@@ -24,12 +24,12 @@ from fastapi import FastAPI
 from fastapi import WebSocket as FastAPIWebSocket
 from starlette.testclient import TestClient
 
-from fastapi_headless_wamp.errors import (
+from fastapi_routerless_wamp.errors import (
     WampCallTimeoutError,
 )
-from fastapi_headless_wamp.hub import WampHub
-from fastapi_headless_wamp.protocol import WampMessageType
-from fastapi_headless_wamp.session import WampSession
+from fastapi_routerless_wamp.hub import WampHub
+from fastapi_routerless_wamp.protocol import WampMessageType
+from fastapi_routerless_wamp.session import WampSession
 
 # ---------------------------------------------------------------------------
 # Mock WebSocket helper

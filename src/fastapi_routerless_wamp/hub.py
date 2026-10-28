@@ -12,8 +12,8 @@ from typing import TYPE_CHECKING, Any
 from fastapi import APIRouter
 from starlette.websockets import WebSocket, WebSocketDisconnect
 
-from fastapi_headless_wamp.errors import WampCanceledError, WampError
-from fastapi_headless_wamp.protocol import (
+from fastapi_routerless_wamp.errors import WampCanceledError, WampError
+from fastapi_routerless_wamp.protocol import (
     WAMP_ERROR_CANCELED,
     WAMP_ERROR_NO_SUCH_PROCEDURE,
     WAMP_ERROR_NO_SUCH_SUBSCRIPTION,
@@ -29,7 +29,7 @@ from fastapi_headless_wamp.protocol import (
     validate_unsubscribe,
     validate_yield,
 )
-from fastapi_headless_wamp.session import (
+from fastapi_routerless_wamp.session import (
     PROGRESSIVE_INPUT_END,
     ProgressiveCallInput,
     RpcHandler,
@@ -38,7 +38,7 @@ from fastapi_headless_wamp.session import (
 )
 
 if TYPE_CHECKING:
-    from fastapi_headless_wamp.service import WampService
+    from fastapi_routerless_wamp.service import WampService
 
 logger = logging.getLogger(__name__)
 

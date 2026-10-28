@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from fastapi_headless_wamp.protocol import WampMessageType
-from fastapi_headless_wamp.types import (
+from fastapi_routerless_wamp.protocol import WampMessageType
+from fastapi_routerless_wamp.types import (
     AbortMessage,
     CallMessage,
     CancelMessage,

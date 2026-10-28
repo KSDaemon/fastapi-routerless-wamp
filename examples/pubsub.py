@@ -15,9 +15,9 @@ from typing import Any
 
 from fastapi import FastAPI
 
-from fastapi_headless_wamp import WampHub, WampService, WampSession, rpc, subscribe
+from fastapi_routerless_wamp import WampHub, WampService, WampSession, rpc, subscribe
 
-app = FastAPI(title="fastapi-headless-wamp PubSub Example")
+app = FastAPI(title="fastapi-routerless-wamp PubSub Example")
 wamp = WampHub(realm="realm1")
 
 

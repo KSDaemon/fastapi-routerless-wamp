@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 # Auto-generated version file (hatch-vcs)
-src/fastapi_headless_wamp/_version.py
+src/fastapi_routerless_wamp/_version.py
 
 # Distribution / packaging
 .Python
