@@ -335,11 +335,26 @@ Workarounds:
 
 ### Server side
 
-On the backend, server-side RPCs and subscriptions become regular WAMP registrations and subscriptions of a client 
-session (e.g. with [Autobahn|Python](https://github.com/crossbario/autobahn-python)). Calls from the server to a 
-specific client use that client's own URI (see above), and publishing to a single session maps to a publish with 
-`eligible=[session_id]`. If a handler relies on knowing the calling client, enable caller/publisher disclosure 
-(`disclose_me`) on the router or in the client.
+This is where most of the migration work is. With this library, the FastAPI app terminates WAMP sessions itself and 
+its RPC handlers and subscriptions are wired in via `@wamp.register` / `@wamp.subscribe` or `WampService` classes. 
+Behind a router, the backend no longer accepts WAMP connections; instead, the RPC handlers and subscriptions move into 
+separate WAMP client components that connect to the router and register / subscribe there like any other peer.
+
+For Python backends, use a WAMP client library such as 
+[Autobahn|Python](https://github.com/crossbario/autobahn-python) or 
+[xconn-python](https://github.com/xconnio/xconn-python), together with a router of your choice 
+(e.g. [Crossbar.io](https://crossbar.io)). Keeping your handlers as plain async functions with the business logic 
+separate from the WAMP wiring makes this step mostly mechanical: only the registration code changes.
+
+A few more things to map:
+
+- The `session` argument of server-side handlers is gone. If a handler needs to know the calling client, enable 
+  caller/publisher disclosure (`disclose_me`) and read the caller's session ID from the invocation/event details.
+- Calls from the server to a specific client use that client's own URI (see above).
+- Publishing to a single session (`session.publish`) maps to a publish with `eligible=[session_id]`, and 
+  `hub.publish_to_all` becomes a regular publish.
+- Session lifecycle callbacks (`on_session_open` / `on_session_close`) map to the router's meta-events 
+  (`wamp.session.on_join` / `wamp.session.on_leave`).
 
 ## Clients Compatibility
 
